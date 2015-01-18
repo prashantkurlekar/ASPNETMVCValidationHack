@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Register","Home"))
 {
     @Html.AntiForgeryToken()
 
@@ -17,7 +17,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
+        @*Basic details panel*@
         <div id="BasicDetailsPnl">
 
             <div class="container">
@@ -55,11 +55,12 @@
             </div>
 
             <div class="nav">
-                <input type="button" value="Next" class="btn btn-default" onclick=" validateBasicDetails();"/>
+                <input type="button" value="Next" class="btn btn-default" onclick="validateBasicDetails();"/>
             </div>
 
         </div>
 
+        @*Contact details panel*@
         <div id="ContactDetailsPnl">
 
             <div class="container">
@@ -106,11 +107,12 @@
 
             <div class="nav">
                 <input type="button" value="Prev" class="btn btn-default" onclick="showBasicDetailsPnl();" />
-                <input type="button" value="Next" class="btn btn-default" onclick=" validateContactDetails();" />
+                <input type="button" value="Next" class="btn btn-default" onclick="validateContactDetails();" />
             </div>
 
         </div>
 
+        @*Other details panel*@
         <div id="OtherDetailsPnl">
 
             <div class="container">
@@ -133,7 +135,7 @@
 
             <div class="nav">
                 <input type="button" value="Prev" class="btn btn-default" onclick="showContactDetails();"/>
-                <input type="submit" value="Finish" class="btn btn-default" />
+                <input type="submit" value="Finish" class="btn btn-default"/>
             </div>
 
         </div>
@@ -151,12 +153,13 @@
         var otherDetailsPnl = $("#OtherDetailsPnl");
         var form = $('form');
 
-        //hide the panel at first load
+        //hide the panel at page load
         $(document).ready(function () {
             contactDetailsPnl.hide();
             otherDetailsPnl.hide();
         });
-        //Next
+
+        //Next - Basic
         function validateBasicDetails() {
 
             var isValid = form.validate().element($('#FirstName'))
@@ -169,12 +172,13 @@
 
             return isValid;
         }
-        //Prev
+        //Prev - Contact Details
         function showContactDetails() {
             otherDetailsPnl.hide();
             contactDetailsPnl.show();
         };
-        //Next
+
+        //Next - Contact Details
         function validateContactDetails() {
             
             var isValid = form.validate().element($('#AddressLine1'))
@@ -187,7 +191,7 @@
 
             return isValid;
         }
-        //Prev
+        //Prev - Other Details
         function showBasicDetailsPnl() {
             contactDetailsPnl.hide();
             basicDetailsPnl.show();

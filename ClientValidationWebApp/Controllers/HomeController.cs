@@ -9,6 +9,16 @@ namespace ClientValidationWebApp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Register()
+        {
+            if(ModelState.IsValid)
+            {
+
+            }
+            return View("Index");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
