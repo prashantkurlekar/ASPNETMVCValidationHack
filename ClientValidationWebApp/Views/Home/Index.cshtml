@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 
-@using (Html.BeginForm("Register","Home"))
+@using (Html.BeginForm("Register", "Home"))
 {
     @Html.AntiForgeryToken()
 
@@ -55,7 +55,7 @@
             </div>
 
             <div class="nav">
-                <input type="button" value="Next" class="btn btn-default" onclick="validateBasicDetails();"/>
+                <input type="button" value="Next" class="btn btn-default" onclick="validateBasicDetails();" />
             </div>
 
         </div>
@@ -134,8 +134,8 @@
             </div>
 
             <div class="nav">
-                <input type="button" value="Prev" class="btn btn-default" onclick="showContactDetails();"/>
-                <input type="submit" value="Finish" class="btn btn-default"/>
+                <input type="button" value="Prev" class="btn btn-default" onclick="showContactDetails();" />
+                <input type="submit" value="Finish" class="btn btn-default" />
             </div>
 
         </div>
@@ -147,7 +147,7 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-        //Get references to panel 
+        //Get references to panel
         var basicDetailsPnl = $("#BasicDetailsPnl");
         var contactDetailsPnl = $("#ContactDetailsPnl");
         var otherDetailsPnl = $("#OtherDetailsPnl");
@@ -180,7 +180,7 @@
 
         //Next - Contact Details
         function validateContactDetails() {
-            
+
             var isValid = form.validate().element($('#AddressLine1'))
                 & form.validate().element($('#PostCode'));
 
